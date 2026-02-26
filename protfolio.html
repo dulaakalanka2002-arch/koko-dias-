@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Koko Morgan — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0f0f;
+    --paper: #f5f0e8;
+    --cream: #ede8db;
+    --accent: #c8502a;
+    --accent-light: #e8705a;
+    --muted: #6b6560;
+    --card-bg: #faf7f2;
+    --border: #d8d0c4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ──────────────────────────────── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--accent); }
+
+  nav { display: flex; gap: 2.2rem; list-style: none; }
+
+  nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 3px;
+    transition: color 0.25s;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 1.5px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover { color: var(--ink); }
+  nav a:hover::after { width: 100%; }
+
+  /* ── HERO ────────────────────────────────── */
+  #home {
+    min-height: 100vh;
+    padding: 9rem 5% 5rem;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    background: var(--paper);
+  }
+
+  .hero-text { flex: 1; }
+
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2.5rem;
+    height: 1.5px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-intro {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin-bottom: 2.4rem;
+    font-weight: 300;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2.2rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 0.88rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 2px solid var(--ink);
+    transition: background 0.28s, color 0.28s;
+  }
+
+  .btn:hover { background: var(--paper); color: var(--ink); }
+
+  .hero-image {
+    flex: 0 0 340px;
+    position: relative;
+  }
+
+  .hero-image .frame {
+    width: 300px;
+    height: 380px;
+    background: var(--cream);
+    border: 2px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-image .frame::after {
+    content: '';
+    position: absolute;
+    top: 14px; left: 14px; right: -14px; bottom: -14px;
+    border: 2px solid var(--accent);
+    z-index: -1;
+  }
+
+  .hero-image img, .hero-image .placeholder-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .placeholder-img {
+    background: linear-gradient(145deg, #d5cfc6 0%, #bbb5aa 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ── SECTION BASE ────────────────────────── */
+  section { padding: 6rem 5%; }
+
+  .section-header { margin-bottom: 3.5rem; }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  /* ── ABOUT ───────────────────────────────── */
+  #about { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    font-size: 1.02rem;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .about-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .detail-block {
+    border-left: 3px solid var(--accent);
+    padding-left: 1.2rem;
+  }
+
+  .detail-block h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .detail-block p {
+    color: var(--muted);
+    font-size: 0.93rem;
+    font-weight: 300;
+  }
+
+  /* ── SKILLS ──────────────────────────────── */
+  #skills { background: var(--paper); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.4rem;
+  }
+
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 2rem 1.6rem;
+    text-align: center;
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s;
+    cursor: default;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    border-color: var(--accent);
+  }
+
+  .skill-icon {
+    font-size: 2.4rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .skill-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .skill-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ── PROJECTS ────────────────────────────── */
+  #projects { background: var(--cream); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  }
+
+  .project-thumb {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-thumb.p1 { background: linear-gradient(135deg, #2c3e50, #4a6274); }
+  .project-thumb.p2 { background: linear-gradient(135deg, #5c3a1e, #8c5a3e); }
+  .project-thumb.p3 { background: linear-gradient(135deg, #1a3a2a, #2e6050); }
+
+  .project-body { padding: 1.6rem; }
+
+  .project-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  .project-body p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── CONTACT ─────────────────────────────── */
+  #contact { background: var(--paper); }
+
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .contact-info p {
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .contact-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .contact-list .icon {
+    width: 42px; height: 42px;
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: border-color 0.25s, background 0.25s;
+  }
+
+  .contact-list li:hover .icon {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+  .contact-list a { color: var(--muted); text-decoration: none; transition: color 0.25s; }
+  .contact-list a:hover { color: var(--accent); }
+
+  .social-links { margin-top: 2.5rem; }
+
+  .social-links h4 {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .social-icons { display: flex; gap: 0.8rem; }
+
+  .social-icon {
+    width: 44px; height: 44px;
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+  }
+
+  .social-icon:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    transform: translateY(-3px);
+  }
+
+  .contact-quote {
+    padding: 3rem;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+  }
+
+  .contact-quote::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.3;
+    position: absolute;
+    top: 1rem; left: 1.5rem;
+  }
+
+  .contact-quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-quote cite {
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.5);
+    text-align: center;
+    padding: 2rem 5%;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+  }
+
+  footer span { color: var(--accent); }
+
+  /* ── DIVIDER ─────────────────────────────── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 5%;
+  }
+
+  /* ── ANIMATIONS ──────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow  { animation: fadeUp 0.7s ease both; }
+  .hero-name     { animation: fadeUp 0.7s 0.15s ease both; }
+  .hero-intro    { animation: fadeUp 0.7s 0.28s ease both; }
+  .btn           { animation: fadeUp 0.7s 0.4s ease both; }
+  .hero-image    { animation: fadeUp 0.7s 0.2s ease both; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="logo" href="#home">Koko<span>.</span></a>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Available for hire</p>
+    <h1 class="hero-name">Koko<br><em>Morgan</em></h1>
+    <p class="hero-intro">Full-Stack Developer & UI Designer crafting thoughtful digital experiences. I turn complex problems into elegant, user-centred solutions.</p>
+    <a href="#contact" class="btn">Contact Me</a>
+  </div>
+  <div class="hero-image">
+    <div class="frame">
+      <img src="photo.jpeg" alt="Alex Morgan">
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <p class="section-label">Who I Am</p>
+    <h2 class="section-title">A bit about<br>myself</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a passionate full-stack developer based in New York, with over four years of experience building web applications that balance performance and aesthetics. I believe great software is equal parts logic and empathy — it should work beautifully and feel effortless to use.</p>
+      <p>When I'm not writing code, you'll find me reading about design systems, experimenting with generative art, or hiking mountain trails to clear my head before the next big sprint.</p>
+    </div>
+    <div class="about-details">
+      <div class="detail-block">
+        <h4>Education</h4>
+        <p>B.Sc. in Computer Science — MIT, 2020<br>Minor in Human–Computer Interaction</p>
+      </div>
+      <div class="detail-block">
+        <h4>Career Goals</h4>
+        <p>To lead product engineering at a mission-driven company, building tools that empower people to do meaningful work faster and with more joy.</p>
+      </div>
+      <div class="detail-block">
+        <h4>Currently</h4>
+        <p>Senior Frontend Engineer at Acme Corp, NYC — working on a real-time collaboration platform used by 200k+ teams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <p class="section-label">What I Do</p>
+    <h2 class="section-title">Skills &amp;<br>Expertise</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <span class="skill-icon">⚛️</span>
+      <h3>React / Next.js</h3>
+      <p>Building scalable SPAs and SSR applications with modern React patterns.</p>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🎨</span>
+      <h3>UI / UX Design</h3>
+      <p>Figma-first design with a focus on accessibility and visual consistency.</p>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🗄️</span>
+      <h3>Node.js & APIs</h3>
+      <p>RESTful and GraphQL API design, microservices, and cloud deployment.</p>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🐍</span>
+      <h3>Python</h3>
+      <p>Data pipelines, automation scripts, and machine-learning integrations.</p>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🛢️</span>
+      <h3>Databases</h3>
+      <p>PostgreSQL, MongoDB, and Redis — schema design through optimisation.</p>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">☁️</span>
+      <h3>DevOps & Cloud</h3>
+      <p>AWS, Docker, CI/CD pipelines, and infrastructure-as-code with Terraform.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <p class="section-label">My Work</p>
+    <h2 class="section-title">Selected<br>Projects</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-thumb p1">📊</div>
+      <div class="project-body">
+        <p class="project-tag">SaaS · React · Node.js</p>
+        <h3>DataVault Dashboard</h3>
+        <p>A real-time analytics platform that aggregates data from 30+ sources and surfaces actionable insights through interactive charts and custom reports.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb p2">🛒</div>
+      <div class="project-body">
+        <p class="project-tag">E-Commerce · Next.js · Stripe</p>
+        <h3>Artisan Market</h3>
+        <p>A full-featured e-commerce marketplace for independent artisans, featuring multi-vendor checkout, inventory management, and a reviews system.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb p3">💬</div>
+      <div class="project-body">
+        <p class="project-tag">Productivity · WebSockets · Redis</p>
+        <h3>Sync — Team Chat</h3>
+        <p>A Slack-inspired messaging app with sub-100ms latency, threaded conversations, and end-to-end encrypted direct messaging for small teams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Let's work<br>together</h2>
+  </div>
+  <div class="contact-wrapper">
+    <div>
+      <div class="contact-info">
+        <h3>Reach me directly</h3>
+        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision.</p>
+        <ul class="contact-list">
+          <li>
+            <div class="icon">✉️</div>
+            <a href="mailto:Koko@Kokomorgan.dev">Koko@Kokomorgan.dev</a>
+          </li>
+          <li>
+            <div class="icon">📞</div>
+            <a href="tel:+12125550199">+1 (212) 555-0199</a>
+          </li>
+          <li>
+            <div class="icon">📍</div>
+            <span style="color:var(--muted)">New York, NY — Open to remote</span>
+          </li>
+        </ul>
+      </div>
+      <div class="social-links">
+        <h4>Follow my work</h4>
+        <div class="social-icons">
+          <a href="#" class="social-icon" title="LinkedIn">in</a>
+          <a href="#" class="social-icon" title="GitHub">⌥</a>
+          <a href="#" class="social-icon" title="Twitter / X">𝕏</a>
+          <a href="#" class="social-icon" title="Dribbble">⬡</a>
+        </div>
+      </div>
+    </div>
+    <div class="contact-quote">
+      <blockquote>The best interfaces are the ones people don't have to think about. Build for humans first.</blockquote>
+      <cite>— Koko Morgan</cite>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 <span>Koko Morgan</span>. Designed &amp; built with care.
+</footer>
+
+</body>
+</html>
